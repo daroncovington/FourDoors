@@ -224,9 +224,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1196966796449760, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265052135561132, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395552444630846, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1536997390485366, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
       propertyPath: m_Name
       value: SportCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705749675078614, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822479468577788, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909018099048906, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956133557518426, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4735839243174642, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
       propertyPath: m_RootOrder
@@ -238,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4735839243174642, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000061035156
+      value: 2.68
       objectReference: {fileID: 0}
     - target: {fileID: 4735839243174642, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
       propertyPath: m_LocalPosition.z
@@ -436,3 +464,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1742499324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1536997390485366, guid: f8b49f9d229541d43b30476c740c2477, type: 3}
+  m_PrefabInstance: {fileID: 724144732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1742499325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742499324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b68fcd9d67815945a8c4c07784bf391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
