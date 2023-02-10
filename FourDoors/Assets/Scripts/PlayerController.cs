@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 60;
+    private float speed = 560;
     private float turnSpeed = 80;
-    private float reverseSpeed = 30;
+    private float reverseSpeed = 230;
     private float horizontalInput;
     private float verticalInput;
     public bool inForward;
     public bool inReverse;
+    public bool turnRight;
+    public bool turnLeft;
+
+    private GameObject FLT;
+    private GameObject FRT;
+    private GameObject BLT;
+    private GameObject BRT;
 
     private Animator playerAnim;
 
@@ -19,6 +26,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAnim = GetComponent<Animator>();
+        FLT = GameObject.Find("FL_Wheel");
+        FRT = GameObject.Find("FR_Wheel");
+        BLT = GameObject.Find("RL_Wheel");
+        BRT = GameObject.Find("RR_Wheel");
     }
 
     // Update is called once per frame
@@ -38,10 +49,23 @@ public class PlayerController : MonoBehaviour
             inReverse = true;
         }
 
+        if(horizontalInput > 0)
+        {
+            turnLeft = false;
+            turnRight = true;
+        }
+        else if(horizontalInput < 0)
+        {
+            turnLeft = true;
+            turnRight = false;
+        }
+
         if(inForward)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
             transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime * horizontalInput);
+
+
         }
        else if(inReverse)
        {
