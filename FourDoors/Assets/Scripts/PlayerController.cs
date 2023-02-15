@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 560;
+    private float speed = 160;
     private float turnSpeed = 80;
-    private float reverseSpeed = 230;
+    private float reverseSpeed = 80;
     private float horizontalInput;
     private float verticalInput;
-    public bool inForward;
-    public bool inReverse;
-    public bool turnRight;
-    public bool turnLeft;
+    private bool inForward;
+    private bool inReverse;
+    private bool turnRight;
+    private bool turnLeft;
 
     private GameObject FLT;
     private GameObject FRT;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         
-        if(verticalInput > 0)
+        if(verticalInput >= 0)
         {
             inForward = true;
             inReverse = false;
