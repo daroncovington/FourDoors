@@ -1,78 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 160;
-    private float turnSpeed = 80;
-    private float reverseSpeed = 80;
-    private float horizontalInput;
-    private float verticalInput;
-    private bool inForward;
-    private bool inReverse;
-    private bool turnRight;
-    private bool turnLeft;
-
-    private GameObject FLT;
-    private GameObject FRT;
-    private GameObject BLT;
-    private GameObject BRT;
-
-    private Animator playerAnim;
-
-
-    // Start is called before the first frame update
+    
+    private Rigidbody rb;
+    public float topSpeed;
+    // public float acceleration;
+    public float turnSpeed;
+    private float currentSpeed;
+    public float gravity;
+    public GameObject lights;
+    public TMP_Text speedText;
+ 
+    public bool lightToggle;
+    private bool isPressed;
+ 
+    private bool IsPressed
+    {
+        get { return isPressed; }
+        set
+        {
+            if(value == isPressed)
+            {
+                return;
+            }
+ 
+            isPressed = value;
+ 
+            if(isPressed)
+            {
+                lightToggle = !lightToggle;
+                lights.SetActive(lightToggle);
+            }
+        }
+    }
+     
+    public float Speed
+    {
+        get
+        {
+            return currentSpeed;
+        }
+    }
+     
     void Start()
     {
-        playerAnim = GetComponent<Animator>();
-        FLT = GameObject.Find("FL_Wheel");
-        FRT = GameObject.Find("FR_Wheel");
-        BLT = GameObject.Find("RL_Wheel");
-        BRT = GameObject.Find("RR_Wheel");
+        rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
-    void Update()
+ 
+    private void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        
-        if(verticalInput >= 0)
+        IsPressed = Input.GetKey(KeyCode.L);
+ 
+        var mph = currentSpeed * 2.237f;
+        speedText.text = mph.ToString("F0");
+    }
+ 
+    void FixedUpdate()
+    {
+        currentSpeed = rb.velocity.magnitude;
+ 
+        if (Input.GetKey(KeyCode.W))
         {
-            inForward = true;
-            inReverse = false;
+            rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * topSpeed);
         }
-        else if (verticalInput < 0)
+        else if (Input.GetKey(KeyCode.S))
         {
-            inForward = false;
-            inReverse = true;
+            rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * -topSpeed * 0.25f);
         }
-
-        if(horizontalInput > 0)
+ 
+        Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+        localVelocity.x = 0;
+        rb.velocity = transform.TransformDirection(localVelocity);
+ 
+        if(rb.velocity.magnitude > topSpeed)
         {
-            turnLeft = false;
-            turnRight = true;
+            rb.velocity = rb.velocity.normalized * topSpeed;
         }
-        else if(horizontalInput < 0)
+ 
+        if(Input.GetKey(KeyCode.D))
         {
-            turnLeft = true;
-            turnRight = false;
-        }
-
-        if(inForward)
+            rb.AddTorque(Vector3.up * turnSpeed * 10);
+        } 
+        else if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
-            transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime * horizontalInput);
-
-
+            rb.AddTorque(-Vector3.up * turnSpeed * 10);
         }
-       else if(inReverse)
-       {
-            transform.Translate(Vector3.forward * reverseSpeed * Time.deltaTime * verticalInput);
-            transform.Rotate(Vector3.down * turnSpeed * Time.deltaTime * horizontalInput);
-       }
-
-        
+ 
+        rb.AddForce(Vector3.down * gravity * 10);
     }
 }
