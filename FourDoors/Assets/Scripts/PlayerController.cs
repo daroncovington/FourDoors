@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     
     private Rigidbody rb;
     public float topSpeed;
+    public float topReverseSpeed;
     // public float acceleration;
     public float turnSpeed;
     private float currentSpeed;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
  
     public bool lightToggle;
     private bool isPressed;
+    private bool inReverse;
  
     private bool IsPressed
     {
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         IsPressed = Input.GetKey(KeyCode.L);
  
-        var mph = currentSpeed * 2.237f;
+        var mph = currentSpeed / 3;
         speedText.text = mph.ToString("F0");
     }
  
@@ -63,13 +65,15 @@ public class PlayerController : MonoBehaviour
     {
         currentSpeed = rb.velocity.magnitude;
  
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * topSpeed);
+            inReverse = false;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * -topSpeed * 0.25f);
+            rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * -topReverseSpeed);
+            inReverse = true;
         }
  
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
@@ -80,12 +84,16 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * topSpeed;
         }
+        else if (rb.velocity.magnitude > topReverseSpeed && inReverse)
+        {
+            rb.velocity = rb.velocity.normalized * topReverseSpeed;
+        }
  
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             rb.AddTorque(Vector3.up * turnSpeed * 10);
         } 
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             rb.AddTorque(-Vector3.up * turnSpeed * 10);
         }
