@@ -7,16 +7,16 @@ public class PlayerController : MonoBehaviour
 {
     
     private Rigidbody rb;
-    public float topSpeed;
-    public float topReverseSpeed;
+    private float topSpeed = 450;
+    private float topReverseSpeed = 100;
     // public float acceleration;
-    public float turnSpeed;
+    private float turnSpeed = 80;
     private float currentSpeed;
-    public float gravity;
+    private float gravity = 5;
     public GameObject lights;
     public TMP_Text speedText;
  
-    public bool lightToggle;
+    private bool lightToggle;
     private bool isPressed;
     private bool inReverse;
  

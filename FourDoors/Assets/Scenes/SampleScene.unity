@@ -1159,8 +1159,8 @@ MonoBehaviour:
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
-  m_horizontalMapping: 3
-  m_verticalMapping: 3
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
   m_IsTextObjectScaleStatic: 0
@@ -1449,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topSpeed: 450
-  topReverseSpeed: 180
+  topReverseSpeed: 100
   turnSpeed: 80
   gravity: 5
   lights: {fileID: 107181550}
