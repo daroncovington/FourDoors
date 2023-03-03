@@ -5,13 +5,25 @@ using UnityEngine;
 public class AwakeManager : MonoBehaviour
 {
     public GameObject toRotate;
-    public GameObject player;
     public float rotateSpeed;
+    public vehicleList listOfVehicles;
+    public int vehiclePointer = 0;
+
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("pointer",0);
+        vehiclePointer = PlayerPrefs.GetInt("pointer");
+
+
+        GameObject childObject = Instantiate(listOfVehicles.vehicles[vehiclePointer],Vector3.zero,Quaternion.identity) as GameObject;
+        childObject.transform.parent = toRotate.transform;
+
+
+    }
 
     private void FixedUpdate()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         toRotate.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
-        player.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
+        
     }
 }
