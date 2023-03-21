@@ -3,31 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Camera cam1;
-    public Camera cam2;
-    public UnityEngine.UI.Button carsButton;
+    public GameObject[] cars;
+    public int currentCar;
 
-    public bool carMenuOpened;
+ 
+    public bool inGamePlayScene = false;
      
     // Start is called before the first frame update
     void Start()
     {
-        cam1.enabled = true;
-        cam2.enabled = false;
-        carMenuOpened = false;
+
+        int selectedCar = PlayerPrefs.GetInt("SelectedCarID");
+        if (inGamePlayScene == true)
+        {
+            cars[selectedCar].SetActive(true);
+            currentCar = selectedCar;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+
+    }
+
+    public void RightClick()
+    {
+        if (currentCar < cars.Length)
         {
-            cam1.enabled = !cam1.enabled;
-            cam2.enabled = !cam2.enabled;
-            carMenuOpened = !carMenuOpened;
+            currentCar += 1;
+            for (int i = 0; i < cars.Length; i++)
+            {
+                cars[i].SetActive(false);
+                cars[currentCar].SetActive(true);
+            }
+            
         }
+        
+    }
+
+    public void LeftClick()
+    {
+        if (currentCar > 0)
+        {
+            currentCar -= 1;
+            for (int i = 0; i < cars.Length; i++)
+            {
+                cars[i].SetActive(false);
+                cars[currentCar].SetActive(true);
+            }
+        }
+    }
+
+    public void CloseCarMenu()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void SelectCar()
+    {
+        PlayerPrefs.SetInt("SelectedCarID", currentCar);
+        SceneManager.LoadScene(1);
+    }
+
+    public void OpenCarMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

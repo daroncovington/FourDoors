@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     
     private Rigidbody rb;
-    private float topSpeed = 450;
-    private float topReverseSpeed = 100;
+    private float maxSpeed = 750;
+    private float topSpeed = 45000;
+    private float topReverseSpeed = 10000;
     // public float acceleration;
-    private float turnSpeed = 80;
+    private float turnSpeed = 17500;
     private float currentSpeed;
-    private float gravity = 5;
+    private float gravity = 10;
     public GameObject lights;
     public TMP_Text speedText;
     private GameManager gameManagerCs;
@@ -67,8 +68,6 @@ public class PlayerController : MonoBehaviour
     {
         currentSpeed = rb.velocity.magnitude;
 
-        if (gameManagerCs.carMenuOpened == false)
-        {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 rb.AddRelativeForce(new Vector3(Vector3.forward.x, 0, Vector3.forward.z) * topSpeed);
@@ -84,13 +83,9 @@ public class PlayerController : MonoBehaviour
             localVelocity.x = 0;
             rb.velocity = transform.TransformDirection(localVelocity);
  
-            if(rb.velocity.magnitude > topSpeed)
+            if(rb.velocity.magnitude > maxSpeed)
             {
-                rb.velocity = rb.velocity.normalized * topSpeed;
-            }
-            else if (rb.velocity.magnitude > topReverseSpeed && inReverse)
-            {
-                rb.velocity = rb.velocity.normalized * topReverseSpeed;
+                rb.velocity = rb.velocity.normalized * maxSpeed;
             }
  
             if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -103,7 +98,6 @@ public class PlayerController : MonoBehaviour
             }
  
             rb.AddForce(Vector3.down * gravity * 10);
-        }
     
     }
 }
