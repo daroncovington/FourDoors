@@ -1354,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8838206598712301179, guid: 1bab401d9c9316e47a8181018e64851f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bab401d9c9316e47a8181018e64851f, type: 3}
@@ -8684,9 +8684,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11447788, guid: 4a383ea4a8bde554a81e12745897d28a, type: 3}
+      propertyPath: rpmGauge
+      value: 
+      objectReference: {fileID: 1727551240}
+    - target: {fileID: 11447788, guid: 4a383ea4a8bde554a81e12745897d28a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11447788, guid: 4a383ea4a8bde554a81e12745897d28a, type: 3}
+      propertyPath: speedGauge
+      value: 
+      objectReference: {fileID: 1240871224}
     - target: {fileID: 11487144, guid: 4a383ea4a8bde554a81e12745897d28a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -12330,6 +12338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1240871224 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3128953115721420994, guid: 1b3d0e645474bf94cb89c9e2a9e9dc46, type: 3}
+  m_PrefabInstance: {fileID: 1216911601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247075096
 GameObject:
   m_ObjectHideFlags: 0
@@ -16524,6 +16537,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 15}
   m_SizeDelta: {x: 32, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &1727551240 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7153128280480368206, guid: 1b3d0e645474bf94cb89c9e2a9e9dc46, type: 3}
+  m_PrefabInstance: {fileID: 1216911601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1741367864
 GameObject:
   m_ObjectHideFlags: 0
@@ -17730,6 +17748,30 @@ PrefabInstance:
     - target: {fileID: 2069814030545375927, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069814030545375933, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
+      propertyPath: rpmGauge
+      value: 
+      objectReference: {fileID: 1727551240}
+    - target: {fileID: 2069814030545375933, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
+      propertyPath: speedGauge
+      value: 
+      objectReference: {fileID: 1240871224}
+    - target: {fileID: 2069814030545375933, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
+      propertyPath: rpmMaxAngle
+      value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069814030545375933, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
+      propertyPath: rpmMinAngle
+      value: -225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069814030545375933, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
+      propertyPath: speedMaxAngle
+      value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069814030545375933, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
+      propertyPath: speedMinAngle
+      value: -225
       objectReference: {fileID: 0}
     - target: {fileID: 6543824245173109062, guid: f7a352f52c0b4034a8e157c2e33e54c4, type: 3}
       propertyPath: m_RootOrder
