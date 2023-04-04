@@ -13,11 +13,15 @@ public class GameManager : MonoBehaviour
 
  
     public bool inGamePlayScene = false;
+
      
     // Start is called before the first frame update
+
     void Start()
     {
         int selectedCar = PlayerPrefs.GetInt("SelectedCarID");
+
+            SceneManager.LoadScene(2);
         if (inGamePlayScene == true)
         {
             cars[selectedCar].SetActive(true);
@@ -77,4 +81,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
+
+    }
+
+    public void Garage()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

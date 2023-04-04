@@ -1441,6 +1441,7 @@ MonoBehaviour:
   - {fileID: 293656186}
   currentCar: 0
   inGamePlayScene: 0
+  inStartScene: 0
 --- !u!4 &1915657081
 Transform:
   m_ObjectHideFlags: 0
