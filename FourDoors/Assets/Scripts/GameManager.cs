@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     {
         int selectedCar = PlayerPrefs.GetInt("SelectedCarID");
 
-            SceneManager.LoadScene(2);
         if (inGamePlayScene == true)
         {
             cars[selectedCar].SetActive(true);
@@ -87,8 +86,4 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Garage()
-    {
-        SceneManager.LoadScene(0);
-    }
 }

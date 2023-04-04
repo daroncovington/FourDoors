@@ -1009,7 +1009,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 50818472}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Garage
+        m_MethodName: OpenCarMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
