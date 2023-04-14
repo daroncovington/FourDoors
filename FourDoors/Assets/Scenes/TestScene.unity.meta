@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:FourDoors/Assets/Scenes/TestScene.unity.meta
 guid: 4d1587bf3c9b5294dbd9d2ad9740815f
+========
+guid: e2da75afcc57e524c984b115fc1536c2
+>>>>>>>> Stashed changes:FourDoors/Assets/Visual Design Cafe/Packages/com.vdc.nature-renderer.vsp-2021.2.0.unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
